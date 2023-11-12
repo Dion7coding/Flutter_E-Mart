@@ -5,8 +5,15 @@ import 'package:emart_app/widgets_common/custom_textfield.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:get/get.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
   const Signup({super.key});
+
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  bool? isCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,14 @@ class Signup extends StatelessWidget {
                 customTextField(hint: passwordHint, title: retypePassword),
                 Row(
                   children: [
-                    Checkbox(value: false, onChanged: (newValue) {}),
+                    //Checkbox
+                    Checkbox(
+                        value: isCheck,
+                        onChanged: (newValue) {
+                          setState(() {
+                            isCheck = newValue;
+                          });
+                        }),
                     10.widthBox,
                     Expanded(
                       child: RichText(
@@ -56,7 +70,7 @@ class Signup extends StatelessWidget {
                 ),
                 5.heightBox,
                 ourButton(
-                        color: blackColor,
+                        color: isCheck==true? blackColor :lightGrey,
                         title: signup,
                         textColor: whiteColor,
                         onPress: () {})

@@ -1,6 +1,7 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/views/auth_screen/signup_screen.dart';
+import 'package:emart_app/views/home_screen/home_screen.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/widgets_common/custom_textfield.dart';
@@ -15,7 +16,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return bgWidget(
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           children: [
@@ -35,35 +36,32 @@ class LoginScreen extends StatelessWidget {
                 5.heightBox,
                 //Login Button
                 ourButton(
-                        color: blackColor,
-                        title: login,
-                        textColor: whiteColor,
-                        onPress: () {})
-                    .box
-                    .width(context.screenWidth - 120)
-                    .make(),
+                    color: blackColor,
+                    title: login,
+                    textColor: whiteColor,
+                    onPress: () {
+                      Get.to(() => HomeScreen());
+                    }).box.width(context.screenWidth - 120).make(),
 
-                    5.heightBox,
-                    createNewAccount.text.color(fontGrey).make(),
-                    //sign-Up Button
-                    5.heightBox,
-                    ourButton(
-                        color: blackColor,
-                        title: signup,
-                        textColor: whiteColor,
-                        onPress: () {
-                          Get.to(()=>Signup());
-                        })
-                    .box
-                    .width(context.screenWidth - 120)
-                    .make(),      
+                5.heightBox,
+                createNewAccount.text.color(fontGrey).make(),
+                //sign-Up Button
+                5.heightBox,
+                ourButton(
+                    color: blackColor,
+                    title: signup,
+                    textColor: whiteColor,
+                    onPress: () {
+                      Get.to(() => Signup());
+                    }).box.width(context.screenWidth - 120).make(),
               ],
             )
                 .box
                 .white
                 .rounded
                 .padding(EdgeInsets.all(16))
-                .width(context.screenWidth - 70).shadowSm
+                .width(context.screenWidth - 70)
+                .shadowSm
                 .make()
           ],
         ),
