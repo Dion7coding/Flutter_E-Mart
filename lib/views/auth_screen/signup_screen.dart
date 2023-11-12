@@ -3,6 +3,7 @@ import 'package:emart_app/widgets_common/applogo_widget.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/widgets_common/custom_textfield.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
+import 'package:get/get.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});
@@ -35,7 +36,8 @@ class Signup extends StatelessWidget {
                           text: const TextSpan(children: [
                         TextSpan(
                             text: "I agree to the ",
-                            style: TextStyle(fontFamily: bold, color: fontGrey)),
+                            style:
+                                TextStyle(fontFamily: bold, color: fontGrey)),
                         TextSpan(
                             text: termsAndConditions,
                             style:
@@ -43,7 +45,7 @@ class Signup extends StatelessWidget {
                         TextSpan(
                             text: "&",
                             style:
-                                TextStyle(fontFamily: bold, color: blackColor)),
+                                TextStyle(fontFamily: bold, color: fontGrey)),
                         TextSpan(
                             text: PrivacyPolicy,
                             style:
@@ -61,6 +63,19 @@ class Signup extends StatelessWidget {
                     .box
                     .width(context.screenWidth - 120)
                     .make(),
+                10.heightBox,
+                //Wapping into gesture detector of velocity x
+                RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: alreadyHaveAccount,
+                      style: TextStyle(fontFamily: bold, color: fontGrey)),
+                  TextSpan(
+                      text: login,
+                      style: TextStyle(fontFamily: bold, color: blackColor)),
+                ])).onTap(() {
+                  Get.back();
+                })
               ],
             )
                 .box
