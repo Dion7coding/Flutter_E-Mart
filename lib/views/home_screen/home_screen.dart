@@ -1,4 +1,5 @@
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/widgets_common/home_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -48,20 +49,43 @@ class HomeScreen extends StatelessWidget {
           ),
           //Featured Product
           20.heightBox,
-          Row(
-            children: List.generate(
-                6,
-                (index) => Column(
-                  children: [
-                    Image.asset(psg_nike,width: 150,fit: BoxFit.cover,)
-                  ],
-                )
-                    .box
-                    .white
-                    .rounded
-                    .padding(EdgeInsets.all(8))
-                    .make()),
-          )
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(
+                  6,
+                  (index) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            psg_nike,
+                            width: 200,
+                            height: 250,
+                            fit: BoxFit.cover,
+                          ),
+                          10.heightBox,
+                          "PSG Shoe - Nike".text.fontFamily(semibold).make(),
+                          10.heightBox,
+                          "\$100".text.color(blackColor).fontFamily(bold).make()
+                        ],
+                      )
+                          .box
+                          .gray100
+                          .margin(EdgeInsets.symmetric(horizontal: 4))
+                          .rounded
+                          .padding(EdgeInsets.all(8))
+                          .make()),
+            ),
+          ),
+          30.heightBox,
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(
+                  2,
+                  (index) => homeButton(
+                      height: context.screenHeight * 0.2,
+                      width: context.screenWidth / 2.5,
+                      icon:index==0? icTodaysDeal:icFlashDeal,
+                      title: index==0? todayDeal:flashsale)))
         ],
       )),
     );
