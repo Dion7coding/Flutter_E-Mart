@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                           10.heightBox,
-                          "PSG Shoe - Nike".text.fontFamily(semibold).make(),
+                          "PSG Shoe - Nike".text.fontFamily(bold).make(),
                           10.heightBox,
                           "\$100".text.color(blackColor).fontFamily(bold).make()
                         ],

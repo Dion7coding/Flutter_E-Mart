@@ -136,3 +136,10 @@ const imgStripe = "assets/images/stripe.png";
 const imgTwocheckout = "assets/images/twocheckout.png";
 const imgVogue = "assets/images/vogue.png";
 const imgWallet = "assets/images/wallet.png";
+//Categories
+const nike_logo = "assets/images/Nike-Logo.png";
+const puma_logo = "assets/images/PUMA-Logo.png";
+const addidas_logo = "assets/images/Adidas-Logo-now.jpg";
+const vans_logo = "assets/images/Vans-Logo.jpg";
+const balenciaga_logo = "assets/images/balenciaga_logo.png";
+const newbalance_logo = "assets/images/newbalance_logo.png";

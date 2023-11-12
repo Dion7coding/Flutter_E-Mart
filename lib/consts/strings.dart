@@ -21,4 +21,17 @@ const home = "Home",
     account = "Account";
 
 //home Screen Strings
-const searchanything = "Search ", todayDeal = "Today's Deal", flashsale ="Flash Sale",topSellers="Top Sellers",brand ="Brand",topCategories="Top Categories",featuredCategories="Featured Categories";
+const searchanything = "Search ",
+    todayDeal = "Today's Deal",
+    flashsale = "Flash Sale",
+    topSellers = "Top Sellers",
+    brand = "Brand",
+    topCategories = "Top Categories",
+    featuredCategories = "Featured Categories";
+//categories Strings
+const nike = "Nike",
+    addidas = "Addidas",
+    puma = "Puma",
+    vans = "Vans",
+    balenciaga = "Balenciaga",
+    newbalance = "New Balance";
