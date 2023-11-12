@@ -51,6 +51,8 @@ const icWallet = "assets/icons/wallet.png";
 const icWhiteTick = "assets/icons/white_tick.png";
 const icWholeSale = "assets/icons/wholesale.png";
 const Sneakstore = "assets/icons/sneak_pic.png";
+const fire = "assets/icons/fire.png";
+const psg_nike = "assets/icons/psg_nike.png";
 
 //images
 

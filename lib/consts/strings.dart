@@ -15,4 +15,10 @@ const loginWith = "log in with";
 const PrivacyPolicy = "Privacy Policy";
 const termsAndConditions = "Terms and Conditions";
 const alreadyHaveAccount = "Already have an account ?";
-const home = "Home", categories = "Categories", cart = "Cart", account ="Account";
+const home = "Home",
+    categories = "Categories",
+    cart = "Cart",
+    account = "Account";
+
+//home Screen Strings
+const searchanything = "Search ", todayDeal = "Today's Deal", flashsale ="Flash Sale",topSellers="Top Sellers",brand ="Brand",topCategories="Top Categories",featuredCategories="Featured Categories";

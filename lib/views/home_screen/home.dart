@@ -1,5 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/views/Profile_screen/profile_screen.dart';
+import 'package:emart_app/views/cart_screen/cart_screen.dart';
+import 'package:emart_app/views/category_screen/category_screen.dart';
+import 'package:emart_app/views/home_screen/home_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,18 +17,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     var navBody = [
-      Container(
-        color: Colors.amber,
-      ),
-      Container(
-        color: Colors.blue,
-      ),
-      Container(
-        color: Colors.red,
-      ),
-      Container(
-        color: Colors.green,
-      ),
+     const HomeScreen(),
+     const CategoryScreen(),
+     const CartScreen(),
+     const ProfileScreen()
     ];
 
     return Scaffold(
