@@ -1,4 +1,5 @@
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/controller/auth_controller.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/widgets_common/custom_textfield.dart';
@@ -14,6 +15,7 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   bool? isCheck = false;
+  var controller = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +72,7 @@ class _SignupState extends State<Signup> {
                 ),
                 5.heightBox,
                 ourButton(
-                        color: isCheck==true? blackColor :lightGrey,
+                        color: isCheck == true ? blackColor : lightGrey,
                         title: signup,
                         textColor: whiteColor,
                         onPress: () {})
