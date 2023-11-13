@@ -37,6 +37,10 @@ dependencies:
   velocity_x:
   get: ^4.6.6
   curved_navigation_bar: ^1.0.3
+  firebase_core: ^2.22.0
+  firebase_auth: ^4.13.0
+  firebase_storage: ^11.5.0
+  cloud_firestore: ^4.13.0
 
 dev_dependencies:
   flutter_test:

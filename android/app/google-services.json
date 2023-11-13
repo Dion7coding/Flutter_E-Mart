@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "523829852776",
+    "project_id": "sneak-colpro",
+    "storage_bucket": "sneak-colpro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523829852776:android:df33d56a9240c0c34e59dd",
+        "android_client_info": {
+          "package_name": "com.example.emart_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYSVeQwTMBW1Bz8jbnElwlFOCU7s6cvn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
