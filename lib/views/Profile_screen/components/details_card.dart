@@ -4,9 +4,9 @@ Widget DetailsCard({width,String? count, String? title}) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      "00".text.fontFamily(bold).color(blackColor).size(16).make(),
+      title!.text.fontFamily(bold).color(blackColor).size(16).make(),
       5.heightBox,
-      "Items in Cart".text.color(blackColor).make()
+      count!.text.color(blackColor).make()
     ],
   )
       .box

@@ -11,4 +11,11 @@ const categoriesImage = [
   balenciaga_logo,
   newbalance_logo
 ];
-const itemdetailsButtonList = [reviews,PrivacyPolicy,returnpolicy,supportpolicy];
+const itemdetailsButtonList = [
+  reviews,
+  PrivacyPolicy,
+  returnpolicy,
+  supportpolicy
+];
+const profileButtonsList = [orders, wishlist, messages];
+const profileButtonIcon = [icOrder,icFavoriteSeller,icMessages];

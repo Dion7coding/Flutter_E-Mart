@@ -40,3 +40,5 @@ const reviews = "Reviews",
     sellerpolicy = "Seller Policy",
     returnpolicy = "Return Policy",
     supportpolicy = "Support Policy";
+//profile Strings
+const wishlist = "My Wishlist", orders = "My Orders", messages = "My Messages";
