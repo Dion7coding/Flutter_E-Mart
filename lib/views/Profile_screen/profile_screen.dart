@@ -90,15 +90,15 @@ class ProfileScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           DetailsCard(
-                              count: "00",
+                              count: data['cart_count'],
                               title: "Items in Cart",
                               width: context.screenWidth / 3.5),
                           DetailsCard(
-                              count: "00",
+                              count: data['wishlist_count'],
                               title: "Wishlist",
                               width: context.screenWidth / 3.5),
                           DetailsCard(
-                              count: "00",
+                              count: data['order_count'],
                               title: "Your Orders",
                               width: context.screenWidth / 3.5)
                         ],
