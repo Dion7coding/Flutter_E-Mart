@@ -25,6 +25,8 @@ class ProfileScreen extends StatelessWidget {
                     valueColor: AlwaysStoppedAnimation(redColor)),
               );
             } else {
+              var data = snapshot.data!.docs[0];
+
               return SafeArea(
                 child: Container(
                   padding: EdgeInsets.all(8),
@@ -55,12 +57,12 @@ class ProfileScreen extends StatelessWidget {
                                 child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                "Dummy User"
+                                "Welcome"
                                     .text
                                     .fontFamily(semibold)
                                     .white
                                     .make(),
-                                "customer@example.com"
+                                "${data['name']}"
                                     .text
                                     .fontFamily(semibold)
                                     .white
