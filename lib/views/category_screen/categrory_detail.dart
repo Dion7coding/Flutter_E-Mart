@@ -24,7 +24,7 @@ class CategoryDetails extends StatelessWidget {
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisExtent: 250),
               itemBuilder: (context, index) {
-                return Column(
+                return Column(crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
                       psg_nike,
