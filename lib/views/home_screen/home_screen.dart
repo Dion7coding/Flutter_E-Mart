@@ -71,9 +71,9 @@ class HomeScreen extends StatelessWidget {
                       )
                           .box
                           .gray100
-                          .margin(EdgeInsets.symmetric(horizontal: 4))
+                          .margin(EdgeInsets.symmetric(horizontal: 10))
                           .rounded
-                          .padding(EdgeInsets.all(8))
+                          .padding(EdgeInsets.all(10))
                           .make()),
             ),
           ),
