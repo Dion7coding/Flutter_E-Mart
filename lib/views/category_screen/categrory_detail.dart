@@ -1,5 +1,7 @@
+import 'package:emart_app/views/category_screen/item_detail.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/consts/consts.dart';
+import 'package:get/get.dart';
 
 class CategoryDetails extends StatelessWidget {
   final String? title;
@@ -20,11 +22,16 @@ class CategoryDetails extends StatelessWidget {
             //itemsContainer
             Expanded(
                 child: GridView.builder(
+              physics: BouncingScrollPhysics(),
               itemCount: 12,
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisExtent: 250),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: 250,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8),
               itemBuilder: (context, index) {
-                return Column(crossAxisAlignment: CrossAxisAlignment.start,
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
                       psg_nike,
@@ -32,7 +39,11 @@ class CategoryDetails extends StatelessWidget {
                       width: 200,
                       fit: BoxFit.cover,
                     ),
-                    "PSG Shoe - Nike".text.color(blackColor).fontFamily(bold).make(),
+                    "PSG Shoe - Nike"
+                        .text
+                        .color(blackColor)
+                        .fontFamily(bold)
+                        .make(),
                     10.heightBox,
                     "\$100".text.color(blackColor).fontFamily(bold).make(),
                     10.heightBox
@@ -43,7 +54,10 @@ class CategoryDetails extends StatelessWidget {
                     .margin(EdgeInsets.symmetric(horizontal: 4))
                     .roundedSM
                     .padding(EdgeInsets.all(12))
-                    .make();
+                    .make()
+                    .onTap(() {
+                  Get.to(() => ItemDetails(title: "Dummy item"));
+                });
               },
             ))
           ],
