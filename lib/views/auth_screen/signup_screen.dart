@@ -1,5 +1,6 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/controller/auth_controller.dart';
+import 'package:emart_app/views/home_screen/home.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/widgets_common/custom_textfield.dart';
@@ -39,17 +40,17 @@ class _SignupState extends State<Signup> {
             Column(
               children: [
                 customTextField(
-                    hint: NameHint, title: Name, controller: nameController),
+                    hint: NameHint, title: Name, controller: nameController,isPass: false),
                 customTextField(
-                    hint: emailHint, title: email, controller: emailController),
+                    hint: emailHint, title: email, controller: emailController,isPass: false),
                 customTextField(
                     hint: passwordHint,
                     title: password,
-                    controller: passwordController),
+                    controller: passwordController,isPass: true),
                 customTextField(
                     hint: passwordHint,
                     title: retypePassword,
-                    controller: confirmpasswordController),
+                    controller: confirmpasswordController,isPass: true),
                 Row(
                   children: [
                     //Checkbox
@@ -86,13 +87,31 @@ class _SignupState extends State<Signup> {
                 ),
                 5.heightBox,
                 ourButton(
-                        color: isCheck == true ? blackColor : lightGrey,
-                        title: signup,
-                        textColor: whiteColor,
-                        onPress: () {})
-                    .box
-                    .width(context.screenWidth - 120)
-                    .make(),
+                    color: isCheck == true ? blackColor : lightGrey,
+                    title: signup,
+                    textColor: whiteColor,
+                    onPress: () async {
+                      if (isCheck != false) {
+                        try {
+                          await controller.Signup(
+                            context: context,
+                            email: emailController.text,
+                            password: passwordController.text,
+                          ).then((value) {
+                            return controller.storeUserData(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                name: nameController.text);
+                          }).then((value) => {
+                                VxToast.show(context, msg: loggedin),
+                                Get.offAll(() => Home())
+                              });
+                        } catch (e) {
+                          auth.signOut();
+                          VxToast.show(context, msg: e.toString());
+                        }
+                      }
+                    }).box.width(context.screenWidth - 120).make(),
                 10.heightBox,
                 //Wapping into gesture detector of velocity x
                 RichText(

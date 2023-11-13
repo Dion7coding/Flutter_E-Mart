@@ -1,7 +1,10 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
+import 'package:emart_app/controller/auth_controller.dart';
 import 'package:emart_app/views/Profile_screen/components/details_card.dart';
+import 'package:emart_app/views/auth_screen/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -51,7 +54,11 @@ class ProfileScreen extends StatelessWidget {
                     OutlinedButton(
                         style: OutlinedButton.styleFrom(
                             side: BorderSide(color: whiteColor)),
-                        onPressed: () {},
+                        onPressed: () async {
+                          await Get.put(AuthController())
+                              .signoutMethod(context: context);
+                          Get.offAll(() => const LoginScreen());
+                        },
                         child: "Logout".text.fontFamily(semibold).white.make())
                   ],
                 ),
@@ -80,7 +87,7 @@ class ProfileScreen extends StatelessWidget {
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return Divider(
-                    color:Vx.gray500,
+                    color: Vx.gray500,
                   );
                 },
                 itemCount: profileButtonsList.length,
@@ -92,7 +99,8 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     title: profileButtonsList[index]
                         .text
-                        .fontFamily(semibold).color(darkFontGrey)
+                        .fontFamily(semibold)
+                        .color(darkFontGrey)
                         .color(blackColor)
                         .make(),
                   );
