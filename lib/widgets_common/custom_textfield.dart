@@ -1,6 +1,6 @@
 import 'package:emart_app/consts/consts.dart';
 
-Widget customTextField({String? title, String? hint,controller}) {
+Widget customTextField({String? title, String? hint,TextEditingController? controller}) {
   return Column(
     crossAxisAlignment:CrossAxisAlignment.start ,
     children: [
@@ -13,6 +13,7 @@ Widget customTextField({String? title, String? hint,controller}) {
       Padding(
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
+          controller: controller,
           decoration:  InputDecoration(
             hintStyle: TextStyle(
               fontFamily: semibold,color: textfieldGrey

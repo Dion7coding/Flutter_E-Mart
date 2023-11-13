@@ -17,6 +17,12 @@ class _SignupState extends State<Signup> {
   bool? isCheck = false;
   var controller = Get.put(AuthController());
 
+  //text controllers
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmpasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -32,10 +38,18 @@ class _SignupState extends State<Signup> {
             40.heightBox,
             Column(
               children: [
-                customTextField(hint: NameHint, title: Name),
-                customTextField(hint: emailHint, title: email),
-                customTextField(hint: passwordHint, title: password),
-                customTextField(hint: passwordHint, title: retypePassword),
+                customTextField(
+                    hint: NameHint, title: Name, controller: nameController),
+                customTextField(
+                    hint: emailHint, title: email, controller: emailController),
+                customTextField(
+                    hint: passwordHint,
+                    title: password,
+                    controller: passwordController),
+                customTextField(
+                    hint: passwordHint,
+                    title: retypePassword,
+                    controller: confirmpasswordController),
                 Row(
                   children: [
                     //Checkbox
