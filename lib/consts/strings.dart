@@ -30,8 +30,13 @@ const searchanything = "Search ",
     featuredCategories = "Featured Categories";
 //categories Strings
 const nike = "Nike",
-    addidas = "Addidas",
+    adidas = "Adidas",
     puma = "Puma",
     vans = "Vans",
     balenciaga = "Balenciaga",
     newbalance = "New Balance";
+//item details strings
+const reviews = "Reviews",
+    sellerpolicy = "Seller Policy",
+    returnpolicy = "Return Policy",
+    supportpolicy = "Support Policy";

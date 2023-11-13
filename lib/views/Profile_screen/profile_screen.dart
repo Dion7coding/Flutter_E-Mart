@@ -1,3 +1,4 @@
+import 'package:emart_app/consts/consts.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -5,8 +6,35 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.person_2_outlined,
+                    color: Colors.white,
+                    size: 50,
+                  ).box.make(),
+                  Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      "Dummy User".text.fontFamily(semibold).white.make(),
+                      
+                      "customer@example.com".text.fontFamily(semibold).white.make()
+                    ],
+                  ))
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

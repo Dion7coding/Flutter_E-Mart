@@ -1,4 +1,5 @@
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:flutter/material.dart';
 
@@ -147,7 +148,6 @@ class ItemDetails extends StatelessWidget {
                                 onPressed: () {}, icon: const Icon(Icons.add)),
                             10.widthBox,
                             "(0 available)".text.color(textfieldGrey).make(),
-                            
                           ],
                         ),
                       ],
@@ -171,9 +171,30 @@ class ItemDetails extends StatelessWidget {
                 ).box.white.shadowSm.make(),
                 //description section
                 10.heightBox,
-                "Description".text.color(darkFontGrey).fontFamily(semibold).make(),
+                "Description"
+                    .text
+                    .color(darkFontGrey)
+                    .fontFamily(semibold)
+                    .make(),
                 10.heightBox,
-                "This is a dummy item and dummy description here...".text.color(darkFontGrey).make()
+                "This is a dummy item and dummy description here..."
+                    .text
+                    .color(darkFontGrey)
+                    .make(),
+                //button section
+                ListView(
+                  shrinkWrap: true,
+                  children: List.generate(
+                      itemdetailsButtonList.length,
+                      (index) => ListTile(
+                            title: "${itemdetailsButtonList[index]}"
+                                .text
+                                .semiBold
+                                .color(darkFontGrey)
+                                .make(),
+                            trailing: Icon(Icons.arrow_forward),
+                          )),
+                )
               ],
             )),
           )),

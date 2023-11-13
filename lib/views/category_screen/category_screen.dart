@@ -12,7 +12,7 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading:Icon(Icons.catching_pokemon_outlined),
+      appBar: AppBar(leading:Icon(Icons.catching_pokemon_rounded),
         backgroundColor: Colors.black,
         title: categories.text.fontFamily(bold).white.make(),
       ),
