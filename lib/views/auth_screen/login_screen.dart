@@ -3,6 +3,7 @@ import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/controller/auth_controller.dart';
 import 'package:emart_app/views/auth_screen/signup_screen.dart';
 import 'package:emart_app/views/home_screen/home.dart';
+import 'package:emart_app/views/home_screen/home_screen.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/widgets_common/custom_textfield.dart';
@@ -56,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                           .then((value) {
                         if (value != null) {
                           VxToast.show(context, msg: loggedin);
-                          Get.offAll(()=> Home());
+                          Get.offAll(() => Home());
                         }
                       });
                     }).box.width(context.screenWidth - 120).make(),

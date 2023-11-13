@@ -15,13 +15,16 @@ class AuthController extends GetxController {
     UserCredential? userCredential;
 
     try {
-      await auth.signInWithEmailAndPassword(
-          email: emailControllers.text, password: passwordControllers.text);
-    } on FirebaseAuthException catch (e) {
-      VxToast.show(context, msg: e.toString());
-    }
-    return userCredential;
+    userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailControllers.text, password: passwordControllers.text);
+
+    // Optionally, you may use userCredential for further operations.
+  } on FirebaseAuthException catch (e) {
+    VxToast.show(context, msg: e.toString()); // Use e.message instead of e.toString()
   }
+
+  return userCredential;
+}
 
   //signup method
   Future<UserCredential?> Signup({email, password, context}) async {
