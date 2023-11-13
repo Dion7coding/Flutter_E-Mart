@@ -2,6 +2,7 @@ import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/controller/auth_controller.dart';
 import 'package:emart_app/views/Profile_screen/components/details_card.dart';
+import 'package:emart_app/views/Profile_screen/edit_screen.dart';
 import 'package:emart_app/views/auth_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,15 +19,16 @@ class ProfileScreen extends StatelessWidget {
           padding: EdgeInsets.all(8),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Icon(
-                    Icons.edit,
-                    color: whiteColor,
-                  ),
-                ),
+               Padding(
+                padding: EdgeInsets.all(8.0),
+                child: const Align(
+                    alignment: Alignment.topRight,
+                    child: Icon(
+                      Icons.edit,
+                      color: whiteColor,
+                    )).onTap(() {
+                      Get.to(()=>const EditProfileScreen());
+                    })
               ),
               //users details section
               Padding(
