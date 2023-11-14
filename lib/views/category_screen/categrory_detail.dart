@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:emart_app/consts/loading_indicator.dart';
+import 'package:emart_app/services/firestore_services.dart';
 import 'package:emart_app/views/category_screen/item_detail.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/consts/consts.dart';
@@ -11,11 +14,22 @@ class CategoryDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return bgWidget(
         child: Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: title!.text.fontFamily(bold).white.make()),
-      body: Container(
+            backgroundColor: Colors.black,
+            appBar: AppBar(
+                backgroundColor: Colors.black,
+                title: title!.text.fontFamily(bold).white.make()),
+            body: StreamBuilder(
+              stream: FireStoreServices.getProducts(title),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(child: (loadingIndicator()));
+                } else if (snapshot.data!.docs.isEmpty) {
+                  return Center(
+                    child: "No Products Found!".text.color(whiteColor).make(),
+                  );
+                }else{
+                  return Container(
         padding: EdgeInsets.all(12),
         child: Column(
           children: [
@@ -68,7 +82,9 @@ class CategoryDetails extends StatelessWidget {
             ))
           ],
         ),
-      ),
-    ));
+      );
+                }
+              },
+            )));
   }
 }
