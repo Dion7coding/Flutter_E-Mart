@@ -10,10 +10,9 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller= Get.find<ProfileController>();
+    var controller = Get.find<ProfileController>();
     controller.nameController.text = data['name'];
     controller.passController.text = data['password'];
-    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -30,16 +29,35 @@ class EditProfileScreen extends StatelessWidget {
             10.heightBox,
             Divider(),
             20.heightBox,
-            customTextField(controller: controller.nameController,hint: NameHint, title: Name, isPass: false),
-            customTextField(controller: controller.passController,hint: passwordHint, title: password, isPass: true),
+            customTextField(
+                controller: controller.nameController,
+                hint: NameHint,
+                title: Name,
+                isPass: false),
+            customTextField(
+                controller: controller.passController,
+                hint: passwordHint,
+                title: password,
+                isPass: true),
             20.heightBox,
-            SizedBox(
-                width: context.screenWidth - 60,
-                child: ourButton(
-                    color: blackColor,
-                    onPress: () {},
-                    textColor: whiteColor,
-                    title: "Save"))
+            controller.isloading.value
+                ? CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(redColor),
+                  )
+                : SizedBox(
+                    width: context.screenWidth - 60,
+                    child: ourButton(
+                      color: blackColor,
+                      onPress: () async {
+                        await controller.updateProfile(
+                          name: controller.nameController.text,
+                          password: controller.passController.text
+                        );
+                        VxToast.show(context, msg: "Updated");
+                      },
+                      textColor: whiteColor,
+                      title: "Save",
+                    ))
           ],
         )
             .box

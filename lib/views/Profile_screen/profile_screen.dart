@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:emart_app/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +17,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller= Get.put(ProfileController());
     return Scaffold(
       backgroundColor: Colors.black,
       body: StreamBuilder(
@@ -45,8 +48,9 @@ class ProfileScreen extends StatelessWidget {
                           Icons.edit,
                           color: whiteColor,
                         ),
-                      
-                      ).onTap(() {
+                      ).onTap((
+                        
+                      ) {
                         Get.to(() => EditProfileScreen(
                           data: data,
                         ));
