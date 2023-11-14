@@ -1,3 +1,4 @@
+import 'package:emart_app/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,14 +39,17 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Align(
+                      child: const Align(
                         alignment: Alignment.topRight,
                         child: Icon(
                           Icons.edit,
                           color: whiteColor,
                         ),
+                      
                       ).onTap(() {
-                        Get.to(() => const EditProfileScreen());
+                        Get.to(() => EditProfileScreen(
+                          data: data,
+                        ));
                       }),
                     ),
                     Padding(
