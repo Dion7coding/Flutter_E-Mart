@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Row(
-                children: [
+                children:  [
                   Text(
                     'Trending',
                     style: TextStyle(
@@ -44,8 +44,10 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 24),
                   ),
+                  
                   Image.asset(fire, height: context.screenHeight * 0.03),
-                ],
+                  Icon(Icons.arrow_forward,color: Colors.white,)
+                ]
               ),
             ),
             //Featured Product
@@ -65,9 +67,15 @@ class HomeScreen extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                             10.heightBox,
-                            "PSG Shoe - Nike".text.fontFamily(bold).make(),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 40),
+                              child: "PSG Shoe - Nike".text.fontFamily(bold).make(),
+                            ),
                             10.heightBox,
-                            "\$100".text.color(blackColor).fontFamily(bold).make()
+                            Padding(
+                              padding: const EdgeInsets.only(left: 75),
+                              child: "\$100".text.color(blackColor).fontFamily(bold).make(),
+                            )
                           ],
                         )
                             .box

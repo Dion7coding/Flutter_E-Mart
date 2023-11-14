@@ -44,8 +44,11 @@ class ItemDetails extends StatelessWidget {
                   itemCount: 3,
                   aspectRatio: 16 / 9,
                   itemBuilder: (context, index) {
-                    return Image.asset(psg_nike,
-                        width: double.infinity, fit: BoxFit.cover);
+                    return Padding(
+                      padding: const EdgeInsets.all(23.0),
+                      child: Image.asset(psg_nike,
+                          width: double.infinity, fit: BoxFit.cover),
+                    );
                   },
                 ),
                 10.heightBox,
@@ -110,20 +113,20 @@ class ItemDetails extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        SizedBox(
-                          width: 100,
-                          child: "Color: ".text.color(textfieldGrey).make(),
-                        ),
-                        Row(
-                          children: List.generate(
-                              3,
-                              (index) => VxBox()
-                                  .size(40, 40)
-                                  .roundedFull
-                                  .color(Vx.randomPrimaryColor)
-                                  .margin(EdgeInsets.symmetric(horizontal: 4))
-                                  .make()),
-                        )
+                        // SizedBox(
+                        //   width: 100,
+                        //   child: "Color: ".text.color(textfieldGrey).make(),
+                        // ),
+                        // Row(
+                        //   children: List.generate(
+                        //       3,
+                        //       (index) => VxBox()
+                        //           .size(40, 40)
+                        //           .roundedFull
+                        //           .color(Vx.randomPrimaryColor)
+                        //           .margin(EdgeInsets.symmetric(horizontal: 4))
+                        //           .make()),
+                        // )
                       ],
                     ).box.padding(EdgeInsets.all(8)).make(),
 
@@ -132,7 +135,7 @@ class ItemDetails extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: 100,
-                          child: "Color: ".text.color(textfieldGrey).make(),
+                          child: "Quantity: ".text.color(textfieldGrey).make(),
                         ),
                         Row(
                           children: [
