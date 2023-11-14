@@ -39,13 +39,19 @@ class CategoryDetails extends StatelessWidget {
                       width: 200,
                       fit: BoxFit.cover,
                     ),
-                    "PSG Shoe - Nike"
-                        .text
-                        .color(blackColor)
-                        .fontFamily(bold)
-                        .make(),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: "PSG Shoe - Nike"
+                          .text
+                          .color(blackColor)
+                          .fontFamily(bold)
+                          .make(),
+                    ),
                     10.heightBox,
-                    "\$100".text.color(blackColor).fontFamily(bold).make(),
+                    Padding(
+                      padding: const EdgeInsets.only(left:55),
+                      child: "\$100".text.color(blackColor).fontFamily(bold).make(),
+                    ),
                     10.heightBox
                   ],
                 )

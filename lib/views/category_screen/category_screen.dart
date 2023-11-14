@@ -25,18 +25,15 @@ class CategoryScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                Image.asset(
-                  categoriesImage[index],
-                  height: 110,
-                  width: 200,
-                  fit: BoxFit.cover,
+                Padding(
+                  padding: const EdgeInsets.only(right: 10,left: 5,bottom: 40,top: 30),
+                  child: Image.asset(
+                    categoriesImage[index],
+                    height: 110,
+                    width: 190,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                10.heightBox,
-                "${categoriesList[index]}"
-                    .text
-                    .color(darkFontGrey)
-                    .align(TextAlign.center)
-                    .make()
               ],
             ).box.white.rounded.clip(Clip.antiAlias).make().onTap(() {
               Get.to(() => CategoryDetails(title: categoriesList[index]));
