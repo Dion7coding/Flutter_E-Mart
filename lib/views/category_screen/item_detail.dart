@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class ItemDetails extends StatelessWidget {
   final String? title;
-
-  const ItemDetails({super.key, required this.title});
+  final dynamic data;
+  const ItemDetails({super.key, required this.title,this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +41,12 @@ class ItemDetails extends StatelessWidget {
                 VxSwiper.builder(
                   autoPlay: true,
                   height: 350,
-                  itemCount: 3,
+                  itemCount: data['p_imgs'].length,
                   aspectRatio: 16 / 9,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(23.0),
-                      child: Image.asset(psg_nike,
+                      child: Image.network(data['p_imgs'][index],
                           width: double.infinity, fit: BoxFit.cover),
                     );
                   },
