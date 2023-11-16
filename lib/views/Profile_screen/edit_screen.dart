@@ -12,7 +12,6 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = Get.find<ProfileController>();
     controller.nameController.text = data['name'];
-    controller.passController.text = data['password'];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -34,10 +33,17 @@ class EditProfileScreen extends StatelessWidget {
                 hint: NameHint,
                 title: Name,
                 isPass: false),
+            10.heightBox,
             customTextField(
-                controller: controller.passController,
+                controller: controller.oldpassController,
                 hint: passwordHint,
-                title: password,
+                title: oldpass,
+                isPass: true),
+            10.heightBox,
+            customTextField(
+                controller: controller.newpassController,
+                hint: passwordHint,
+                title: newpass,
                 isPass: true),
             20.heightBox,
             controller.isloading.value
@@ -49,11 +55,25 @@ class EditProfileScreen extends StatelessWidget {
                     child: ourButton(
                       color: blackColor,
                       onPress: () async {
+                        controller.isloading(true);
+
+                       //if old pass matches database
+                       if(data['password'] == controller.oldpassController.text){
+                        await controller.chageAuthPassword(
+                          email: data['email'],
+                          password: controller.oldpassController.text,
+                          newpassword: controller.newpassController.text,
+                        );
+
                         await controller.updateProfile(
                           name: controller.nameController.text,
-                          password: controller.passController.text
+                          password: controller.newpassController.text
                         );
                         VxToast.show(context, msg: "Updated");
+                       }else{
+                        VxToast.show(context, msg: "Wrong old password");
+                        controller.isloading(false);
+                       }
                       },
                       textColor: whiteColor,
                       title: "Save",
