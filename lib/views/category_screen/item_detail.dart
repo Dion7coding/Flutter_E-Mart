@@ -1,7 +1,9 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
+import 'package:emart_app/controller/product_controller.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ItemDetails extends StatelessWidget {
   final String? title;
@@ -10,6 +12,8 @@ class ItemDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put<ProductController>(ProductController());
+    var controller = Get.find<ProductController>();
     return Scaffold(
       backgroundColor: lightGrey,
       appBar: AppBar(
@@ -61,15 +65,18 @@ class ItemDetails extends StatelessWidget {
                 10.heightBox,
                 //rating
                 VxRating(
+                  isSelectable: false,
+                  value: double.parse(data['p_rating']),
                   onRatingUpdate: (value) {},
                   normalColor: textfieldGrey,
                   selectionColor: golden,
                   size: 25,
                   stepInt: true,
+                  maxRating: 5,
                 ),
 
                 10.heightBox,
-                "\$30,000"
+                "${data['p_price']}".numCurrency
                     .text
                     .color(blackColor)
                     .fontFamily(bold)
@@ -86,7 +93,7 @@ class ItemDetails extends StatelessWidget {
                       children: [
                         "Seller".text.white.fontFamily(semibold).make(),
                         5.heightBox,
-                        "In House Brands"
+                        "${data['p_seller']}"
                             .text
                             .fontFamily(semibold)
                             .color(darkFontGrey)
@@ -118,21 +125,29 @@ class ItemDetails extends StatelessWidget {
                           width: 100,
                           child: "Quantity: ".text.color(blackColor).make(),
                         ),
-                        Row(
-                          children: [
-                            IconButton(
-                                onPressed: () {}, icon: Icon(Icons.remove)),
-                            "0"
-                                .text
-                                .size(16)
-                                .color(darkFontGrey)
-                                .fontFamily(bold)
-                                .make(),
-                            IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.add)),
-                            10.widthBox,
-                            "(0 available)".text.color(textfieldGrey).make(),
-                          ],
+                        Obx(
+                          ()=> Row(
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    controller.decreaseQuantity();
+                                  }, icon: Icon(Icons.remove)),
+                              controller.quantity.value
+                                  .text
+                                  .size(16)
+                                  .color(darkFontGrey)
+                                  .fontFamily(bold)
+                                  .make(),
+                              IconButton(
+                                  onPressed: () {
+                                    controller.increaseQuantity(
+                                      int.parse(data['p_quantity'])
+                                    );
+                                  }, icon: const Icon(Icons.add)),
+                              10.widthBox,
+                              "${data['p_quantity']} available".text.color(blackColor).make(),
+                            ],
+                          ),
                         ),
                       ],
                     ).box.padding(EdgeInsets.all(8)).make(),
@@ -161,7 +176,7 @@ class ItemDetails extends StatelessWidget {
                     .fontFamily(semibold)
                     .make(),
                 10.heightBox,
-                "This is a dummy item and dummy description here..."
+                "${data['p_desc']}"
                     .text
                     .color(darkFontGrey)
                     .make(),
