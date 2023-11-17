@@ -111,31 +111,12 @@ class ItemDetails extends StatelessWidget {
                 //color section
                 Column(
                   children: [
-                    Row(
-                      children: [
-                        // SizedBox(
-                        //   width: 100,
-                        //   child: "Color: ".text.color(textfieldGrey).make(),
-                        // ),
-                        // Row(
-                        //   children: List.generate(
-                        //       3,
-                        //       (index) => VxBox()
-                        //           .size(40, 40)
-                        //           .roundedFull
-                        //           .color(Vx.randomPrimaryColor)
-                        //           .margin(EdgeInsets.symmetric(horizontal: 4))
-                        //           .make()),
-                        // )
-                      ],
-                    ).box.padding(EdgeInsets.all(8)).make(),
-
                     //quantity row
                     Row(
                       children: [
                         SizedBox(
                           width: 100,
-                          child: "Quantity: ".text.color(textfieldGrey).make(),
+                          child: "Quantity: ".text.color(blackColor).make(),
                         ),
                         Row(
                           children: [
@@ -160,7 +141,7 @@ class ItemDetails extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: 100,
-                          child: "Total: ".text.color(textfieldGrey).make(),
+                          child: "Total: ".text.color(blackColor).make(),
                         ),
                         "\$0.00"
                             .text
