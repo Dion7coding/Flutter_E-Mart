@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class ItemDetails extends StatelessWidget {
   final String? title;
   final dynamic data;
-  const ItemDetails({super.key, required this.title,this.data});
+  const ItemDetails({super.key, required this.title, this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,8 @@ class ItemDetails extends StatelessWidget {
                 ),
 
                 10.heightBox,
-                "${data['p_price']}".numCurrency
+                "${data['p_price']}"
+                    .numCurrency
                     .text
                     .color(blackColor)
                     .fontFamily(bold)
@@ -126,14 +127,16 @@ class ItemDetails extends StatelessWidget {
                           child: "Quantity: ".text.color(blackColor).make(),
                         ),
                         Obx(
-                          ()=> Row(
+                          () => Row(
                             children: [
                               IconButton(
                                   onPressed: () {
                                     controller.decreaseQuantity();
-                                  }, icon: Icon(Icons.remove)),
-                              controller.quantity.value
-                                  .text
+                                    controller.calculateTotalPrice(
+                                        int.parse(data['p_price']));
+                                  },
+                                  icon: Icon(Icons.remove)),
+                              controller.quantity.value.text
                                   .size(16)
                                   .color(darkFontGrey)
                                   .fontFamily(bold)
@@ -141,11 +144,17 @@ class ItemDetails extends StatelessWidget {
                               IconButton(
                                   onPressed: () {
                                     controller.increaseQuantity(
-                                      int.parse(data['p_quantity'])
+                                      int.parse(data['p_quantity']),
                                     );
-                                  }, icon: const Icon(Icons.add)),
+                                    controller.calculateTotalPrice(
+                                        int.parse(data['p_price']));
+                                  },
+                                  icon: const Icon(Icons.add)),
                               10.widthBox,
-                              "${data['p_quantity']} available".text.color(blackColor).make(),
+                              "${data['p_quantity']} available"
+                                  .text
+                                  .color(blackColor)
+                                  .make(),
                             ],
                           ),
                         ),
@@ -158,7 +167,8 @@ class ItemDetails extends StatelessWidget {
                           width: 100,
                           child: "Total: ".text.color(blackColor).make(),
                         ),
-                        "\$0.00"
+                        "${controller.totalPrice.value}"
+                            .numCurrency
                             .text
                             .color(redColor)
                             .size(16)
@@ -176,10 +186,7 @@ class ItemDetails extends StatelessWidget {
                     .fontFamily(semibold)
                     .make(),
                 10.heightBox,
-                "${data['p_desc']}"
-                    .text
-                    .color(darkFontGrey)
-                    .make(),
+                "${data['p_desc']}".text.color(darkFontGrey).make(),
                 //button section
                 ListView(
                   shrinkWrap: true,
@@ -202,7 +209,16 @@ class ItemDetails extends StatelessWidget {
             height: 60,
             child: ourButton(
                 color: redColor,
-                onPress: () {},
+                onPress: () {
+                  controller.addToCart(
+                      context: context,
+                      img: data['p_imgs'][0],
+                      qty: controller.quantity.value,
+                      sellername: data['p_seller'],
+                      title: data['p_name'],
+                      tprice: controller.totalPrice.value);
+                  VxToast.show(context, msg: 'Added to cart');
+                },
                 textColor: whiteColor,
                 title: "Add to cart"),
           )

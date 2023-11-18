@@ -12,7 +12,8 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading:Icon(Icons.catching_pokemon_rounded),
+      appBar: AppBar(automaticallyImplyLeading: false,
+        
         backgroundColor: Colors.black,
         title: categories.text.fontFamily(bold).white.make(),
       ),
@@ -26,7 +27,8 @@ class CategoryScreen extends StatelessWidget {
             return Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 10,left: 5,bottom: 40,top: 30),
+                  padding: const EdgeInsets.only(
+                      right: 10, left: 5, bottom: 37, top: 30),
                   child: Image.asset(
                     categoriesImage[index],
                     height: 110,
