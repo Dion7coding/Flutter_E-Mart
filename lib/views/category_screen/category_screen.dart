@@ -13,7 +13,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(automaticallyImplyLeading: false,
-        
+      
         backgroundColor: Colors.black,
         title: categories.text.fontFamily(bold).white.make(),
       ),

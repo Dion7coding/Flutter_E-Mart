@@ -1,27 +1,28 @@
-// ignore_for_file: sort_child_properties_last
+// ignore_for_file: sort_child_properties_last, prefer_typing_uninitialized_variables
+
+import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/loading_indicator.dart';
+import 'package:emart_app/controller/cart_controller.dart';
 import 'package:emart_app/services/firestore_services.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(CartController());
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.black,
-            title: "Shopping Cart"
-                .text
-                .color(whiteColor)
-                .fontFamily(semibold)
-                .make()),
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.black,
+        ),
         body: StreamBuilder(
             stream: FireStoreServices.getCart(currentUser!.uid),
             builder:
@@ -32,9 +33,10 @@ class CartScreen extends StatelessWidget {
                 );
               } else if (snapshot.data!.docs.isEmpty) {
                 return Center(
-                    child: "Cart is empty".text.color(blackColor).make());
+                    child: "Cart is empty".text.color(whiteColor).make());
               } else {
                 var data = snapshot.data!.docs;
+                controller.calculate(data);
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -46,7 +48,7 @@ class CartScreen extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
                               leading: Image.network('${data[index]['img']}'),
-                              title: "${data[index]['title']}"
+                              title: "${data[index]['title']} (x ${data[index]['qty']})"
                                   .text
                                   .fontFamily(semibold)
                                   .size(16)
@@ -57,7 +59,13 @@ class CartScreen extends StatelessWidget {
                                   .fontFamily(semibold)
                                   .size(16)
                                   .make(),
-                                  trailing: Icon(Icons.delete,color: Colors.black,),
+                              trailing: Icon(
+                                Icons.delete,
+                                color: Colors.black,
+                              ).onTap(() {
+                                FireStoreServices.deleteDocument(
+                                    data[index].id);
+                              }),
                             );
                           },
                         ),
@@ -71,12 +79,14 @@ class CartScreen extends StatelessWidget {
                               .fontFamily(semibold)
                               .color(darkFontGrey)
                               .make(),
-                          "40"
-                              .numCurrency
-                              .text
-                              .fontFamily(semibold)
-                              .color(darkFontGrey)
-                              .make()
+                          Obx(
+                            () => "${controller.totalP.value}"
+                                .numCurrency
+                                .text
+                                .fontFamily(semibold)
+                                .color(darkFontGrey)
+                                .make(),
+                          )
                         ],
                       )
                           .box
