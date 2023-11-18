@@ -33,7 +33,7 @@ class CartScreen extends StatelessWidget {
                 );
               } else if (snapshot.data!.docs.isEmpty) {
                 return Center(
-                    child: "Cart is empty".text.color(whiteColor).make());
+                    child: "Cart is empty !".text.color(whiteColor).make());
               } else {
                 var data = snapshot.data!.docs;
                 controller.calculate(data);
@@ -71,6 +71,7 @@ class CartScreen extends StatelessWidget {
                         ),
                         color: Colors.white,
                       )),
+                      10.heightBox,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
