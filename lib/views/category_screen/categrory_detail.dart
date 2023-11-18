@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/consts/loading_indicator.dart';
+import 'package:emart_app/controller/product_controller.dart';
 import 'package:emart_app/services/firestore_services.dart';
 import 'package:emart_app/views/category_screen/item_detail.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
@@ -12,6 +13,7 @@ class CategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      Get.put<ProductController>(ProductController());
     return bgWidget(
         child: Scaffold(
             backgroundColor: Colors.black,
@@ -29,6 +31,7 @@ class CategoryDetails extends StatelessWidget {
                     child: "No Products Found!".text.color(whiteColor).make(),
                   );
                 } else {
+                  var controller = Get.find<ProductController>();
                   var data = snapshot.data!.docs;
                   return Container(
                     padding: EdgeInsets.all(12),
@@ -66,7 +69,8 @@ class CategoryDetails extends StatelessWidget {
                                 10.heightBox,
                                 Padding(
                                   padding: const EdgeInsets.only(left: 50),
-                                  child: "${data[index]['p_price']}".numCurrency
+                                  child: "${data[index]['p_price']}"
+                                      .numCurrency
                                       .text
                                       .color(blackColor)
                                       .fontFamily(bold)
@@ -82,7 +86,11 @@ class CategoryDetails extends StatelessWidget {
                                 .padding(EdgeInsets.all(12))
                                 .make()
                                 .onTap(() {
-                              Get.to(() => ItemDetails(title: "${data[index]['p_name']}",data: data[index],));
+                              controller.checifFav(data[index]);
+                              Get.to(() => ItemDetails(
+                                    title: "${data[index]['p_name']}",
+                                    data: data[index],
+                                  ));
                             });
                           },
                         ))
