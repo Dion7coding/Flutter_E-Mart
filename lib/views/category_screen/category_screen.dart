@@ -31,7 +31,7 @@ class CategoryScreen extends StatelessWidget {
                       right: 10, left: 5, bottom: 37, top: 30),
                   child: Image.asset(
                     categoriesImage[index],
-                    height: 110,
+                    height: 111,
                     width: 190,
                     fit: BoxFit.cover,
                   ),
