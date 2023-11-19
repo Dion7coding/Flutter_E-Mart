@@ -69,7 +69,7 @@ class ItemDetails extends StatelessWidget {
                     aspectRatio: 16 / 9,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(23.0),
+                        padding: const EdgeInsets.all(40.0),
                         child: Image.network(data['p_imgs'][index],
                             width: double.infinity, fit: BoxFit.cover),
                       );
