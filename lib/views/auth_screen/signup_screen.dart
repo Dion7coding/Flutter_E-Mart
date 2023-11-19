@@ -117,7 +117,7 @@ class _SignupState extends State<Signup> {
                                       password: passwordController.text,
                                       name: nameController.text);
                                 }).then((value) => {
-                                      VxToast.show(context, msg: loggedin),
+                                      
                                       Get.offAll(() => Home())
                                     });
                               } catch (e) {
