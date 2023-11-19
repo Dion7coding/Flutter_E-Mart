@@ -36,13 +36,8 @@ class AuthController extends GetxController {
     UserCredential? userCredential;
 
     try {
-      if(passwordControllers.text == confirmpasswordControllers.text){
-        await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      }
-      else{
-        VxToast.show(context, msg: "Passwords do not match".toString());
-      }
+      await auth.createUserWithEmailAndPassword(
+        email: email, password: password);
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
     }
