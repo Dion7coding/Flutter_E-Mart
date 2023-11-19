@@ -7,6 +7,7 @@ import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/loading_indicator.dart';
 import 'package:emart_app/controller/cart_controller.dart';
 import 'package:emart_app/services/firestore_services.dart';
+import 'package:emart_app/views/cart_screen/shipping.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,7 @@ class CartScreen extends StatelessWidget {
     var controller = Get.put(CartController());
     return Scaffold(
         backgroundColor: Colors.black,
+        
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.black,
@@ -100,7 +102,9 @@ class CartScreen extends StatelessWidget {
                       SizedBox(
                         child: ourButton(
                             color: darkFontGrey,
-                            onPress: () {},
+                            onPress: () {
+                               Get.to(() => const ShippingDetails());
+                            },
                             textColor: whiteColor,
                             title: "Proceed to Shipping"),
                         width: context.screenWidth - 60,
