@@ -55,7 +55,7 @@ class CategoryDetails extends StatelessWidget {
                                 Image.network(
                                   data[index]['p_imgs'][0],
                                   height: 150,
-                                  width: 200,
+                                  width: 210,
                                   fit: BoxFit.cover,
                                 ),
                                 Padding(
