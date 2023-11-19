@@ -11,6 +11,7 @@ class AuthController extends GetxController {
   //textcointrollers
   var emailControllers = TextEditingController();
   var passwordControllers = TextEditingController();
+  var confirmpasswordControllers = TextEditingController();
 
   //login method
 
@@ -35,8 +36,13 @@ class AuthController extends GetxController {
     UserCredential? userCredential;
 
     try {
-      await auth.createUserWithEmailAndPassword(
+      if(passwordControllers.text == confirmpasswordControllers.text){
+        await auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      }
+      else{
+        VxToast.show(context, msg: "Passwords do not match".toString());
+      }
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
     }
