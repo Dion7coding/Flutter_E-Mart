@@ -26,8 +26,8 @@ class PaymentMethods
           title: "Place my order",
         ),
       ),
-      appBar: AppBar(
-        title: "Choose Payment Method".text.fontFamily(semibold).color(darkFontGrey).make(),
+      appBar: AppBar(backgroundColor: Colors.black,
+        title: "Choose Payment Method".text.fontFamily(semibold).color(whiteColor).make(),
       ),
       
     );

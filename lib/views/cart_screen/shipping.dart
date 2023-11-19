@@ -15,8 +15,8 @@ class ShippingDetails extends StatelessWidget {
     var controller = Get.find<CartController>();
     return Scaffold(
       backgroundColor: whiteColor,
-      appBar: AppBar(
-        title: "Shipping Info".text.fontFamily(semibold).color(darkFontGrey).make(),
+      appBar: AppBar(backgroundColor:Colors.black,
+        title: "Shipping Info".text.fontFamily(semibold).color(whiteColor).make(),
       ),
       bottomNavigationBar: SizedBox(
         height: 60,
