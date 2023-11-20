@@ -45,13 +45,16 @@ class _PaymentMethodsState extends State<PaymentMethods> {
 
   void makePayment() async {
     var options = {
-      'key': 'rzp_test_pNVT6mr62CLtf7',
-      'amount': 50000, //in the smallest currency sub-unit.
-      'name': 'Sneak Store',
-      'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
-      'description': 'Fine T-Shirt',
-      'prefill': { 'email': 'gaurav.kumar@example.com'}
-    };
+  'key': 'rzp_test_pNVT6mr62CLtf7',
+  'amount': 50000, //in the smallest currency sub-unit.
+  'name': 'Sneak Store',
+  'description': 'Fine T-Shirt',
+  
+  'prefill': {
+    'contact': '9207339522',
+    'email': 'gaurav.kumar@example.com'
+  }
+};
     try {
       _razorpay?.open(options);
     } catch (e) {
