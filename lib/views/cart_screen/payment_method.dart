@@ -17,6 +17,7 @@ class PaymentMethods extends StatefulWidget {
 }
 
 class _PaymentMethodsState extends State<PaymentMethods> {
+  var controller = Get.put(CartController());
   Razorpay? _razorpay;
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
@@ -45,16 +46,17 @@ class _PaymentMethodsState extends State<PaymentMethods> {
 
   void makePayment() async {
     var options = {
-  'key': 'rzp_test_pNVT6mr62CLtf7',
-  'amount': 50000, //in the smallest currency sub-unit.
-  'name': 'Sneak Store',
-  'description': 'Fine T-Shirt',
-  
-  'prefill': {
-    'contact': '9207339522',
-    'email': 'gaurav.kumar@example.com'
-  }
-};
+      'key': 'rzp_test_pNVT6mr62CLtf7',
+      'amount':
+          controller.totalP.value * 100, //in the smallest currency sub-unit.
+      'name': 'Sneak Store',
+      'description': 'Fine T-Shirt',
+
+      'prefill': {
+        'contact':"${controller.phoneController}",
+        'email': 'gaurav.kumar@example.com'
+      }
+    };
     try {
       _razorpay?.open(options);
     } catch (e) {
@@ -64,6 +66,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
 
   @override
   Widget build(BuildContext context) {
+    
     var controller = Get.find<CartController>();
 
     return Scaffold(
@@ -72,7 +75,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
         height: 60,
         child: ourButton(
           onPress: () {
-           makePayment();
+            makePayment();
           },
           color: redColor,
           textColor: whiteColor,
