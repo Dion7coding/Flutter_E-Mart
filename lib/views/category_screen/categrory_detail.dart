@@ -13,7 +13,7 @@ class CategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      Get.put<ProductController>(ProductController());
+    Get.put<ProductController>(ProductController());
     return bgWidget(
         child: Scaffold(
             backgroundColor: Colors.black,
@@ -59,7 +59,8 @@ class CategoryDetails extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 50),
+                                  padding: EdgeInsets.all(
+                                      MediaQuery.of(context).size.width / 200),
                                   child: "${data[index]['p_name']}"
                                       .text
                                       .color(blackColor)
@@ -68,7 +69,8 @@ class CategoryDetails extends StatelessWidget {
                                 ),
                                 10.heightBox,
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 50),
+                                  padding: EdgeInsets.all(
+                                      MediaQuery.of(context).size.width / 600),
                                   child: "${data[index]['p_price']}"
                                       .numCurrency
                                       .text
