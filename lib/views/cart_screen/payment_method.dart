@@ -69,7 +69,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
         height: 60,
         child: ourButton(
           onPress: () {
-            makePayment();
+           makePayment();
           },
           color: redColor,
           textColor: whiteColor,
