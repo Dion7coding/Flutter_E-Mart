@@ -11,6 +11,7 @@ import 'package:emart_app/views/cart_screen/shipping.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -20,7 +21,6 @@ class CartScreen extends StatelessWidget {
     var controller = Get.put(CartController());
     return Scaffold(
         backgroundColor: Colors.black,
-        
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.black,
@@ -35,7 +35,17 @@ class CartScreen extends StatelessWidget {
                 );
               } else if (snapshot.data!.docs.isEmpty) {
                 return Center(
-                    child: "Cart is empty !".text.color(whiteColor).make());
+                  child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                          child: LottieBuilder.asset("assets/images/zNgR3USMxu.json")),
+                              10.heightBox,
+                      Center(
+                          child:
+                              "Cart is empty !".text.color(whiteColor).make()),
+                    ],
+                  ),
+                );
               } else {
                 var data = snapshot.data!.docs;
                 controller.calculate(data);
@@ -50,11 +60,12 @@ class CartScreen extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
                               leading: Image.network('${data[index]['img']}'),
-                              title: "${data[index]['title']} (x ${data[index]['qty']})"
-                                  .text
-                                  .fontFamily(semibold)
-                                  .size(16)
-                                  .make(),
+                              title:
+                                  "${data[index]['title']} (x ${data[index]['qty']})"
+                                      .text
+                                      .fontFamily(semibold)
+                                      .size(16)
+                                      .make(),
                               subtitle: "${data[index]['tprice']}"
                                   .numCurrency
                                   .text
@@ -103,7 +114,7 @@ class CartScreen extends StatelessWidget {
                         child: ourButton(
                             color: darkFontGrey,
                             onPress: () {
-                               Get.to(() => const ShippingDetails());
+                              Get.to(() => const ShippingDetails());
                             },
                             textColor: whiteColor,
                             title: "Proceed to Shipping"),

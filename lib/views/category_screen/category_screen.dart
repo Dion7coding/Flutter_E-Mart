@@ -27,13 +27,15 @@ class CategoryScreen extends StatelessWidget {
             return Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                      right: 10, left: 5, bottom: 37, top: 30),
-                  child: Image.asset(
-                    categoriesImage[index],
-                    height: 111,
-                    width: 190,
-                    fit: BoxFit.cover,
+                  padding:EdgeInsets.all(MediaQuery.of(context).size.width/10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      categoriesImage[index],
+                      height: 50,
+                      width: 80,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],

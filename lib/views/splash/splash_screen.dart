@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +19,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   //creating a method to change screeen
   changeScreen() {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 4), () {
       //using getx
       //Get.to(() => const LoginScreen());
       auth.authStateChanges().listen((User? user) {
@@ -44,19 +45,13 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Image.asset(
-                    icSplashBg,
-                    width: 300,
-                  )),
-              20.heightBox,
-              applogoWidget(),
+              Center(
+                  child: LottieBuilder.asset("assets/images/Jd9ExdaB06.json")),
               10.heightBox,
               appname.text.fontFamily(bold).size(22).white.make(),
               5.heightBox,
-              appversion.text.white.make()
             ],
           ),
         ),
