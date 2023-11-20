@@ -12,8 +12,9 @@ class ItemDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put<ProductController>(ProductController());
+
     var controller = Get.find<ProductController>();
+    
     return WillPopScope(
       onWillPop: () async {
         controller.resetValues();

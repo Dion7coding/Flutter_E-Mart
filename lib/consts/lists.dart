@@ -1,4 +1,5 @@
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/views/cart_screen/payment_method.dart';
 
 const socialIconList = [icGoogleLogo, icXLogo];
 
@@ -19,3 +20,6 @@ const itemdetailsButtonList = [
 ];
 const profileButtonsList = [orders, wishlist, messages];
 const profileButtonIcon = [icOrder,icFavoriteSeller,icMessages];
+
+const PaymentMethodsImg = [imgRozarpay, imgCod];
+const PaymentMethods= [razor,cod];

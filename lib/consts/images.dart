@@ -136,6 +136,7 @@ const imgStripe = "assets/images/stripe.png";
 const imgTwocheckout = "assets/images/twocheckout.png";
 const imgVogue = "assets/images/vogue.png";
 const imgWallet = "assets/images/wallet.png";
+const imgRazor = "assets/images/razor.png";
 //Categories
 const nike_logo = "assets/images/Nike-Logo.png";
 const puma_logo = "assets/images/puma.png";

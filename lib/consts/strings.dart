@@ -46,3 +46,6 @@ const reviews = "Reviews",
     supportpolicy = "Support Policy";
 //profile Strings
 const wishlist = "My Wishlist", orders = "My Orders", messages = "My Messages";
+
+//payment methods strings
+const razor = "RazorPay", cod = "Cash on delivery";

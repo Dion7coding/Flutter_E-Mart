@@ -11,6 +11,7 @@ class CartController extends GetxController {
   var postalController = TextEditingController();
   var phoneController = TextEditingController();
   
+  var paymentIndex = 0.obs;
 
   
   calculate(data) {
@@ -19,4 +20,9 @@ class CartController extends GetxController {
       totalP.value = totalP.value + int.parse(data[i]['tprice'].toString());
     }
   }
+
+changePaymentIndex(index){
+  paymentIndex.value = index;
+}
+
 }
