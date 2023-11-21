@@ -1,8 +1,4 @@
-// ignore_for_file: unused_local_variable
-
 import 'package:emart_app/controller/profile_controller.dart';
-import 'package:emart_app/views/orders_screen/orders_screen.dart';
-import 'package:emart_app/views/whistlist_screen/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

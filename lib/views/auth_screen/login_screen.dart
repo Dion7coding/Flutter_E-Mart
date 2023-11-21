@@ -1,6 +1,7 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/controller/auth_controller.dart';
+import 'package:emart_app/views/auth_screen/forgot_password.dart';
 import 'package:emart_app/views/auth_screen/signup_screen.dart';
 import 'package:emart_app/views/home_screen/home.dart';
 import 'package:emart_app/views/home_screen/home_screen.dart';

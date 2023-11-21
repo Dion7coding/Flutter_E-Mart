@@ -1,6 +1,4 @@
-// ignore_for_file: sort_child_properties_last, prefer_typing_uninitialized_variables
-
-import 'dart:ffi';
+// ignore_for_file: sort_child_properties_last
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/consts/consts.dart';
@@ -35,11 +33,13 @@ class CartScreen extends StatelessWidget {
                 );
               } else if (snapshot.data!.docs.isEmpty) {
                 return Center(
-                  child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
-                          child: LottieBuilder.asset("assets/images/zNgR3USMxu.json")),
-                              10.heightBox,
+                          child: LottieBuilder.asset(
+                              "assets/images/zNgR3USMxu.json")),
+                      10.heightBox,
                       Center(
                           child:
                               "Cart is empty !".text.color(whiteColor).make()),
@@ -51,7 +51,7 @@ class CartScreen extends StatelessWidget {
                 controller.calculate(data);
                 controller.productSnapshot = data;
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:  EdgeInsets.all(8.0),
                   child: Column(
                     children: [
                       Expanded(
@@ -60,9 +60,10 @@ class CartScreen extends StatelessWidget {
                           itemCount: data.length,
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
-                              leading: Image.network('${data[index]['img']}',
-                              width: 120,
-                              fit: BoxFit.cover,
+                              leading: Image.network(
+                                '${data[index]['img']}',
+                                width: 120,
+                                fit: BoxFit.cover,
                               ),
                               title:
                                   "${data[index]['title']} (x ${data[index]['qty']})"
@@ -76,7 +77,7 @@ class CartScreen extends StatelessWidget {
                                   .fontFamily(semibold)
                                   .size(16)
                                   .make(),
-                              trailing: Icon(
+                              trailing: const Icon(
                                 Icons.delete,
                                 color: Colors.black,
                               ).onTap(() {
