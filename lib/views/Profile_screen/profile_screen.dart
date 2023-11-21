@@ -1,6 +1,8 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:emart_app/controller/profile_controller.dart';
+import 'package:emart_app/views/orders_screen/orders_screen.dart';
+import 'package:emart_app/views/whistlist_screen/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -134,6 +136,16 @@ class ProfileScreen extends StatelessWidget {
                       itemCount: profileButtonsList.length,
                       itemBuilder: (context, index) {
                         return ListTile(
+                          onTap: (){
+                            switch (index){
+                              case 0:
+                               Get.to(()=>OrdersScreen());
+                               break;
+                              case 1:
+                               Get.to(()=> WishlistScreen());
+                               break;
+                            }
+                          },
                           leading: Image.asset(
                             profileButtonIcon[index],
                             width: 24,
