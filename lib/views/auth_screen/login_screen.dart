@@ -56,9 +56,7 @@ class LoginScreen extends StatelessWidget {
                     Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                            onPressed: () {
-                               Get.to(() => forgotPassword());
-                            }, child: forgetPass.text.make())),
+                            onPressed: () {}, child: forgetPass.text.make())),
                     5.heightBox,
                     //Login Button
                     controller.isLoading.value

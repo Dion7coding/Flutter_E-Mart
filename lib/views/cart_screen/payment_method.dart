@@ -65,8 +65,8 @@ class _PaymentMethodsState extends State<PaymentMethods> {
     };
     try {
       _razorpay?.open(options);
-      Get.offAll(()=>Payment_Success());
       controller.placeMyOrder( totalAmount: controller.totalP.value);
+      Get.offAll(()=>Payment_Success());
     } catch (e) {
       debugPrint(e.toString());
     }
