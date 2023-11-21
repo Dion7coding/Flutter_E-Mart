@@ -1,5 +1,6 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
+import 'package:emart_app/views/home_screen/home.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:get/get.dart';
 import 'cart_screen.dart';
@@ -45,6 +46,8 @@ class _PaymentMethodsState extends State<PaymentMethods> {
   }
 
   void makePayment() async {
+   
+
     var options = {
       'key': 'rzp_test_pNVT6mr62CLtf7',
       'amount':
@@ -53,35 +56,35 @@ class _PaymentMethodsState extends State<PaymentMethods> {
       'description': 'Fine T-Shirt',
 
       'prefill': {
-        'contact':"${controller.phoneController}",
+        'contact': "${controller.phoneController}",
         'email': 'gaurav.kumar@example.com'
       }
     };
     try {
       _razorpay?.open(options);
+      Get.offAll(()=>Home());
     } catch (e) {
       debugPrint(e.toString());
     }
   }
 
+  void cod ()async{
+     showDialog(
+      context: context,
+      builder: (context) {
+        return Center(child: CircularProgressIndicator());
+      },
+    );
+    Get.offAll(()=>Home());
+    VxToast.show(context, msg: "Order Placed");
+  }
+
   @override
   Widget build(BuildContext context) {
-    
     var controller = Get.find<CartController>();
 
     return Scaffold(
       backgroundColor: whiteColor,
-      bottomNavigationBar: SizedBox(
-        height: 60,
-        child: ourButton(
-          onPress: () {
-            makePayment();
-          },
-          color: redColor,
-          textColor: whiteColor,
-          title: "Place my order",
-        ),
-      ),
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: "Choose Payment Method"
@@ -90,51 +93,49 @@ class _PaymentMethodsState extends State<PaymentMethods> {
             .color(whiteColor)
             .make(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Obx(
-          () => Column(
-            children: List.generate(PaymentMethodsImg.length, (index) {
-              return GestureDetector(
-                onTap: () {
-                  controller.changePaymentIndex(index);
-                },
-                child: Container(
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: controller.paymentIndex.value == index
-                              ? redColor
-                              : Colors.transparent,
-                          width: 5,
-                        )),
-                    margin: EdgeInsets.only(bottom: 8),
-                    child: Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        Image.asset(PaymentMethodsImg[index],
-                            width: double.infinity,
-                            height: 120,
-                            fit: BoxFit.cover),
-                        controller.paymentIndex.value == index
-                            ? Transform.scale(
-                                scale: 1.3,
-                                child: Checkbox(
-                                  activeColor: Colors.green,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50)),
-                                  value: true,
-                                  onChanged: (value) {},
-                                ),
-                              )
-                            : Container(),
-                      ],
-                    )),
-              );
-            }),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              150.heightBox,
+              Container(
+                child: Image.asset(
+                  "assets/images/rozarpay.png",
+                  height: context.screenHeight / 10,
+                  width: context.screenWidth - 200,
+                ),
+              ),
+              50.heightBox,
+              ElevatedButton(
+                  onPressed: () {
+                    makePayment();
+                  },
+                  child: Text("Click to Pay"),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.black)),
+            ],
           ),
-        ),
+          Row(
+            children: [
+              150.heightBox,
+              Container(
+                child: Image.asset(
+                  "assets/images/cod.png",
+                  height: context.screenHeight / 10,
+                  width: context.screenWidth - 200,
+                ),
+              ),
+              50.heightBox,
+              ElevatedButton(
+                onPressed: () {
+                  cod();
+                },
+                child: Text("Click to Place Order"),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
