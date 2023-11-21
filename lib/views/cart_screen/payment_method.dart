@@ -3,6 +3,7 @@ import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/controller/profile_controller.dart';
 import 'package:emart_app/views/Profile_screen/profile_screen.dart';
 import 'package:emart_app/views/home_screen/home.dart';
+import 'package:emart_app/views/splash/payment_success.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:get/get.dart';
 import 'cart_screen.dart';
@@ -64,7 +65,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
     };
     try {
       _razorpay?.open(options);
-      Get.offAll(()=>Home());
+      Get.offAll(()=>Payment_Success());
       controller.placeMyOrder( totalAmount: controller.totalP.value);
     } catch (e) {
       debugPrint(e.toString());
@@ -73,11 +74,13 @@ class _PaymentMethodsState extends State<PaymentMethods> {
 
   void cod ()async{
    
-    controller.placeMyOrder( totalAmount: controller.totalP.value);
-    Get.offAll(()=>Home());
-    VxToast.show(context, msg: "Order Placed");
-    
-    
+     try {
+
+      Get.offAll(()=>Payment_Success());
+      controller.placeMyOrder( totalAmount: controller.totalP.value);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   @override
