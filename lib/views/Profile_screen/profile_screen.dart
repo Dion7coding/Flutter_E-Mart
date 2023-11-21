@@ -1,5 +1,6 @@
 import 'package:emart_app/controller/profile_controller.dart';
 import 'package:emart_app/views/Order_screen/OrderScreen.dart';
+import 'package:emart_app/views/about_page/about_page.dart';
 import 'package:emart_app/views/wishlist_screen/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller= Get.put(ProfileController());
+    var controller = Get.put(ProfileController());
     return Scaffold(
       backgroundColor: Colors.black,
       body: StreamBuilder(
@@ -40,22 +41,7 @@ class ProfileScreen extends StatelessWidget {
                 padding: EdgeInsets.all(8),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.topRight,
-                        child: Icon(
-                          Icons.edit,
-                          color: whiteColor,
-                        ),
-                      ).onTap((
-                        
-                      ) {
-                        Get.to(() => EditProfileScreen(
-                          data: data,
-                        ));
-                      }),
-                    ),
+                    20.heightBox,
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -92,36 +78,14 @@ class ProfileScreen extends StatelessWidget {
                                   .signoutMethod(context: context);
                               Get.offAll(() => const LoginScreen());
                             },
-                            child: "Logout"
-                                .text
-                                .fontFamily(semibold)
-                                .white
-                                .make(),
+                            child:
+                                "Logout".text.fontFamily(semibold).white.make(),
                           ),
                         ],
                       ),
                     ),
                     20.heightBox,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        DetailsCard(
-                          count: data['cart_count'],
-                          title: "Items in Cart",
-                          width: context.screenWidth / 3.5,
-                        ),
-                        DetailsCard(
-                          count: data['wishlist_count'],
-                          title: "Wishlist",
-                          width: context.screenWidth / 3.5,
-                        ),
-                        DetailsCard(
-                          count: data['order_count'],
-                          title: "Your Orders",
-                          width: context.screenWidth / 3.5,
-                        ),
-                      ],
-                    ),
+
                     30.heightBox,
                     // Buttons section
                     ListView.separated(
@@ -134,19 +98,25 @@ class ProfileScreen extends StatelessWidget {
                       itemCount: profileButtonsList.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          onTap: (){
-                            switch (index){
+                          onTap: () {
+                            switch (index) {
                               case 0:
-                               Get.to(()=>OrdersScreen());
-                               break;
+                                Get.to(() => OrdersScreen());
+                                break;
                               case 1:
-                               Get.to(()=> WishlistScreen());
-                               break;
+                                Get.to(() => WishlistScreen());
+                              case 2:
+                                Get.to(() => EditProfileScreen(
+                                      data: data,
+                                    ));
+                              case 3:
+                               Get.to(() => About_page());
+                                break;
                             }
                           },
                           leading: Image.asset(
                             profileButtonIcon[index],
-                            width: 24,
+                            width: 24,color: Colors.black,
                           ),
                           title: profileButtonsList[index]
                               .text

@@ -18,8 +18,8 @@ const itemdetailsButtonList = [
   returnpolicy,
   supportpolicy
 ];
-const profileButtonsList = [orders, wishlist, messages];
-const profileButtonIcon = [icOrder,icFavoriteSeller,icMessages];
+const profileButtonsList = [orders, wishlist,editProfile,about];
+const profileButtonIcon = [icOrder,icHeart,icEdit,icabout];
 
 const PaymentMethodsImg = [imgRozarpay, imgCod];
 const PaymentMethods= [razor,cod];

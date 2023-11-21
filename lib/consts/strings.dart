@@ -23,6 +23,8 @@ const home = "Home",
     categories = "Categories",
     cart = "Cart",
     account = "Account";
+const editProfile = "Edit Profile";
+const about = "About";
 
 //home Screen Strings
 const searchanything = "Search ",

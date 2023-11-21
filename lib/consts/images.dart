@@ -56,6 +56,7 @@ const Sneakstore = "assets/icons/sneak_pic.png";
 const fire = "assets/icons/fire.png";
 const psg_nike = "assets/icons/psg_nike.png";
 const crown = "assets/icons/crown.jpg";
+const icabout = "assets/images/information.png";
 
 //images
 
@@ -144,3 +145,6 @@ const addidas_logo = "assets/images/Adidas-Logo-now.jpg";
 const vans_logo = "assets/images/Vans-Logo.jpg";
 const balenciaga_logo = "assets/images/balenciaga_logo.png";
 const newbalance_logo = "assets/images/newbalance_logo.png";
+
+//animations
+const orders_anim = "assets/images/Orders_anim.json";

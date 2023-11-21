@@ -19,7 +19,7 @@ class CartScreen extends StatelessWidget {
     var controller = Get.put(CartController());
     return Scaffold(
         backgroundColor: Colors.black,
-        appBar: AppBar(
+        appBar: AppBar(title: Text("Cart Page",style: TextStyle(fontFamily: semibold),),
           automaticallyImplyLeading: false,
           backgroundColor: Colors.black,
         ),
