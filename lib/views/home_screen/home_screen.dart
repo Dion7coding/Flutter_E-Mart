@@ -1,6 +1,7 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/widgets_common/home_button.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -45,8 +46,7 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 24),
                   ),
                   
-                  Image.asset(fire, height: context.screenHeight * 0.03),
-                  Icon(Icons.arrow_forward,color: Colors.white,)
+                  LottieBuilder.asset("assets/images/Animation - 1700543176416.json",height: 35,)
                 ]
               ),
             ),
