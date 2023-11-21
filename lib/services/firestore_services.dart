@@ -29,30 +29,4 @@ class FireStoreServices {
   static deleteDocument(docId) {
     return firestore.collection(cartcollection).doc(docId).delete();
   }
-
-  //get featured products methos
-  static getFeaturedProducts() {
-    return firestore
-        .collection(productsCollection)
-        .where('p_trending', isEqualTo: true)
-        .get();
-  }
-
-  //get limited products methos
-  static getLimitedProducts() {
-    return firestore
-        .collection(productsCollection)
-        .where('p_limited', isEqualTo: true)
-        .get();
-  }
- //wishlist
-  static getWishlists(){
-    return firestore.collection(productsCollection).where('p_wishlist',arrayContains: currentUser!.uid).snapshots();
-  }
-
-  //Orders
-  static getAllOrders(){
-    return firestore.collection(ordersCollection).where('order_by',isEqualTo: currentUser!.uid).snapshots();
-  }
 }
-
