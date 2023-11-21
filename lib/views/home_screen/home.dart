@@ -34,8 +34,10 @@ class _HomeState extends State<Home> {
         return false;
       },
       child: Scaffold(
+        
         body: Column(
           children: [Expanded(child: navBody.elementAt(myindex))],
+          
         ),
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.black,

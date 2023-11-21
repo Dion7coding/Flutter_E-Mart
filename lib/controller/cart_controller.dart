@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:emart_app/controller/home_controller.dart';
+import 'package:emart_app/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:emart_app/consts/consts.dart';
@@ -12,6 +15,8 @@ class CartController extends GetxController {
   var phoneController = TextEditingController();
   
   var paymentIndex = 0.obs;
+  late dynamic productSnapshot;
+  var products = [];
 
   
   calculate(data) {
@@ -25,4 +30,41 @@ changePaymentIndex(index){
   paymentIndex.value = index;
 }
 
+placeMyOrder({ required totalAmount }) async {
+   Get.put(HomeController());
+    await getProductDetails();
+    await firestore.collection(ordersCollection).doc().set({
+      'order_code' : "233981237",
+      'order_date' : FieldValue.serverTimestamp(),
+      'order_by': currentUser!.uid,
+      'order_by_name': Get.find<HomeController>().username,
+      'order_by_email' : currentUser!.email,
+      'order_by_address' : addressController.text,
+      'order_by_state' : addressController.text,
+      'order_by_city' : addressController.text,
+      'order_by_phone' : addressController.text,
+      'order_by_postalcode' : postalController.text,
+      'order_by_method' : "Home Delivery",
+      'order_placed' : true ,
+      'order_confirmed': false,
+      'order_delivered': false,
+      'order_on_delivery': false,
+      'total_amount' : totalAmount,
+      'orders' : FieldValue.arrayUnion(products)
+    });
+  }
+
+   getProductDetails(){
+    products.clear();
+    for (var i = 0; i < productSnapshot.length; i++) {
+      
+      products.add({
+        'img' : productSnapshot[i]['img'],
+        'qty' : productSnapshot[i]['qty'],
+        'title' : productSnapshot[i]['title']
+      });
+    }
+
+    print(products);
+  }
 }
