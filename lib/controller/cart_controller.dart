@@ -17,6 +17,7 @@ class CartController extends GetxController {
   var paymentIndex = 0.obs;
   late dynamic productSnapshot;
   var products = [];
+  var placingOrder = false.obs;
 
   
   calculate(data) {
@@ -31,6 +32,7 @@ changePaymentIndex(index){
 }
 
 placeMyOrder({ required totalAmount }) async {
+  placingOrder(true);
    Get.put(HomeController());
     await getProductDetails();
     await firestore.collection(ordersCollection).doc().set({
@@ -52,6 +54,7 @@ placeMyOrder({ required totalAmount }) async {
       'total_amount' : totalAmount,
       'orders' : FieldValue.arrayUnion(products)
     });
+    placingOrder(false);
   }
 
    getProductDetails(){
@@ -61,10 +64,10 @@ placeMyOrder({ required totalAmount }) async {
       products.add({
         'img' : productSnapshot[i]['img'],
         'qty' : productSnapshot[i]['qty'],
+        'vendor_id': productSnapshot[i]['vendor_id'],
+        'tprice': productSnapshot[i]['tprice'],
         'title' : productSnapshot[i]['title']
       });
     }
-
-    print(products);
   }
 }

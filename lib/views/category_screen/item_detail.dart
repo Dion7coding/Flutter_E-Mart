@@ -233,6 +233,7 @@ class ItemDetails extends StatelessWidget {
                   onPress: () {
                     controller.addToCart(
                         context: context,
+                        vendorID: data['vendor_id'],
                         img: data['p_imgs'][0],
                         qty: controller.quantity.value,
                         sellername: data['p_seller'],
