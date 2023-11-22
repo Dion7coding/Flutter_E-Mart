@@ -45,10 +45,10 @@ class FireStoreServices {
   }
 
   static getTrendingProducts() {
-    return firestore.collection(productsCollection).where('p_trending').snapshots();
+    return firestore.collection(productsCollection).where('p_trending',isEqualTo: true).snapshots();
   }
 
   static getLimitedProducts(){
-    return firestore.collection(productsCollection).where('p_limited').snapshots();
+    return firestore.collection(productsCollection).where('p_limited',isEqualTo: true).snapshots();
   }
 }

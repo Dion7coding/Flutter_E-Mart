@@ -10,8 +10,8 @@ class OrdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
-      appBar: AppBar(
-        title: "Order History".text.color(darkFontGrey).fontFamily(semibold).make(),
+      appBar: AppBar(backgroundColor: Colors.black,
+        title: "Order History".text.color(whiteColor).fontFamily(semibold).make(),
       ),
       body: StreamBuilder(
         stream: FireStoreServices.getAllOrders(),

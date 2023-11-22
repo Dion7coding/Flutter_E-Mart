@@ -10,8 +10,8 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
-      appBar: AppBar(
-        title: "My Wishlist".text.color(darkFontGrey).fontFamily(semibold).make(),
+      appBar: AppBar(backgroundColor: blackColor,
+        title: "My Wishlist".text.color(whiteColor).fontFamily(semibold).make(),
       ),
       body: StreamBuilder(
         stream: FireStoreServices.getWishlists(),

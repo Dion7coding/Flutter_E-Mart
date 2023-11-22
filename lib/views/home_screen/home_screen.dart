@@ -21,27 +21,7 @@ class HomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // Search Bar
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  color: lightGrey,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
-                      ),
-                      suffixIcon: Icon(Icons.search),
-                      filled: true,
-                      fillColor: whiteColor,
-                      hintText: searchanything,
-                      hintStyle: TextStyle(color: textfieldGrey),
-                    ),
-                  ),
-                ),
-              ),
-
+              50.heightBox,
               // Trending Products
               Padding(
                 padding: const EdgeInsets.only(left: 20),
